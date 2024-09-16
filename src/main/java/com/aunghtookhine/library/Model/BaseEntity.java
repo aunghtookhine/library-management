@@ -1,23 +1,21 @@
 package com.aunghtookhine.library.Model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.ColumnDefault;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
 @MappedSuperclass
-public class BaseEntity {
+public abstract class BaseEntity {
     @Id
     @GeneratedValue()
     private Integer id;
-    @ColumnDefault("false")
-    private boolean isAvailable;
+    private boolean isAvailable = true;
     @Column(updatable = false)
-    @CreatedDate
+    @CreationTimestamp
     private Instant createdAt;
-    @LastModifiedDate
+    @UpdateTimestamp
     private Instant updatedAt;
 
     public BaseEntity() {

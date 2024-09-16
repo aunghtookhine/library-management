@@ -1,27 +1,31 @@
 package com.aunghtookhine.library.Model;
 
 import com.aunghtookhine.library.Enum.Genre;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
+import org.springframework.cglib.core.Local;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Book extends BaseEntity {
+    @Column(unique = true)
     private String title;
     private String author;
     @Column(updatable = false)
-    private Date publishedDate;
+    private LocalDate publishedDate;
     @Enumerated(EnumType.STRING)
     private Genre genre;
     private int quantity;
 
+    @OneToMany(mappedBy = "book")
+    private List<Record> records;
+
     public Book() {
     }
 
-    public Book(String title, String author, Date publishedDate, Genre genre, int quantity) {
+    public Book(String title, String author, LocalDate publishedDate, Genre genre, int quantity) {
         this.title = title;
         this.author = author;
         this.publishedDate = publishedDate;
@@ -45,11 +49,11 @@ public class Book extends BaseEntity {
         this.author = author;
     }
 
-    public Date getPublishedDate() {
+    public LocalDate getPublishedDate() {
         return publishedDate;
     }
 
-    public void setPublishedDate(Date publishedDate) {
+    public void setPublishedDate(LocalDate publishedDate) {
         this.publishedDate = publishedDate;
     }
 

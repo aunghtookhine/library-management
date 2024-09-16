@@ -2,17 +2,26 @@ package com.aunghtookhine.library.Model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.CurrentTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 public class Member extends BaseEntity {
     private String name;
+    @Column(unique = true)
     private String email;
+    @Column(unique = true)
     private String phone;
     @Column(updatable = false)
-    @CreatedDate
+    @CreationTimestamp
     private Instant memberSince;
+
+    @OneToMany(mappedBy = "member")
+    private List<Record> records;
 
     public Member() {
     }

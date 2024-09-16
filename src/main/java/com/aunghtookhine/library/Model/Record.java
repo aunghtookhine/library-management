@@ -1,16 +1,24 @@
 package com.aunghtookhine.library.Model;
 import com.aunghtookhine.library.Enum.Status;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 import java.time.LocalDate;
+import java.util.Locale;
 
 @Entity
 public class Record extends BaseEntity{
-    private LocalDate borrowDate;
-    @ColumnDefault("null")
-    private LocalDate returnDate;
-    @ColumnDefault("borrowed")
-    private Status status;
+    private LocalDate borrowDate = LocalDate.now();
+    private LocalDate returnDate = null;
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.borrowed;
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
 
     public Record() {
     }
@@ -43,5 +51,21 @@ public class Record extends BaseEntity{
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 }
