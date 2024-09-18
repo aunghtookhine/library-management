@@ -4,19 +4,16 @@ import com.aunghtookhine.library.dto.BookDto;
 import com.aunghtookhine.library.enums.Genre;
 import com.aunghtookhine.library.service.BookService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("api/books")
+@AllArgsConstructor
 public class BookController {
     private final BookService bookService;
-
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping

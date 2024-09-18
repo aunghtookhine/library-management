@@ -7,21 +7,17 @@ import com.aunghtookhine.library.exception.DuplicateBookTitle;
 import com.aunghtookhine.library.mapper.BookMapper;
 import com.aunghtookhine.library.model.Book;
 import com.aunghtookhine.library.repository.BookRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
-
-    public BookService(BookRepository bookRepository, BookMapper bookMapper) {
-        this.bookRepository = bookRepository;
-        this.bookMapper = bookMapper;
-    }
 
     public BookDto createBook(BookDto dto) {
         Book checkBookTitleDuplicate = bookRepository.findByTitle(dto.title());

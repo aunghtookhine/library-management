@@ -4,19 +4,16 @@ import com.aunghtookhine.library.dto.MemberDto;
 import com.aunghtookhine.library.dto.MemberResponseDto;
 import com.aunghtookhine.library.service.MemberService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("api/members")
+@AllArgsConstructor
 public class MemberController {
     private final MemberService memberService;
-
-    public MemberController(MemberService memberService) {
-        this.memberService = memberService;
-    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping

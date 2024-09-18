@@ -5,7 +5,6 @@ import com.aunghtookhine.library.model.Record;
 import jakarta.validation.constraints.Positive;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -18,4 +17,6 @@ public interface RecordRepository extends JpaRepository<Record, Integer> {
     List<Record> findAllByIsAvailableTrue();
 
     List<Record> findAllByStatusAndIsAvailableTrue(Status status);
+
+    List<Record> findAllByMemberIdAndReturnDateNull(Integer id);
 }

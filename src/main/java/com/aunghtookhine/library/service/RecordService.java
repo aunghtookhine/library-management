@@ -11,25 +11,19 @@ import com.aunghtookhine.library.model.Record;
 import com.aunghtookhine.library.repository.BookRepository;
 import com.aunghtookhine.library.repository.MemberRepository;
 import com.aunghtookhine.library.repository.RecordRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class RecordService {
     private final RecordRepository recordRepository;
     private final RecordMapper recordMapper;
     private final MemberRepository memberRepository;
     private final BookRepository bookRepository;
-
-    public RecordService(RecordRepository recordRepository, RecordMapper recordMapper, MemberRepository memberRepository, BookRepository bookRepository) {
-        this.recordRepository = recordRepository;
-        this.recordMapper = recordMapper;
-        this.memberRepository = memberRepository;
-        this.bookRepository = bookRepository;
-    }
 
     public RecordResponseDto borrowBook(RecordDto dto) {
         Member member = memberRepository.findByIdAndIsAvailableTrue(dto.memberId()).orElseThrow(()-> new MemberNotFoundException("Invalid Member with Id: "+ dto.memberId()));
@@ -49,8 +43,8 @@ public class RecordService {
     }
 
     public RecordResponseDto returnBook(RecordDto dto){
-        memberRepository.findById(dto.memberId()).orElseThrow(()-> new MemberNotFoundException("Invalid Member with Id: "+ dto.memberId()));
-        Book book = bookRepository.findById(dto.bookId()).orElseThrow(()-> new BookNotFoundException("Invalid Book with Id: " + dto.bookId()));
+        memberRepository.findByIdAndIsAvailableTrue(dto.memberId()).orElseThrow(()-> new MemberNotFoundException("Invalid Member with Id: "+ dto.memberId()));
+        Book book = bookRepository.findByIdAndIsAvailableTrue(dto.bookId()).orElseThrow(()-> new BookNotFoundException("Invalid Book with Id: " + dto.bookId()));
         Record record = recordRepository.findByMemberIdAndBookIdAndStatus(dto.memberId(), dto.bookId(), Status.borrowed);
         if(record == null){
             throw new RecordNotFoundException("There's no record with Member Id: " + dto.memberId() + " and Book Id: " + dto.bookId());

@@ -5,19 +5,16 @@ import com.aunghtookhine.library.dto.RecordResponseDto;
 import com.aunghtookhine.library.enums.Status;
 import com.aunghtookhine.library.service.RecordService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("api/records")
+@AllArgsConstructor
 public class RecordController {
     private final RecordService recordService;
-
-    public RecordController(RecordService recordService) {
-        this.recordService = recordService;
-    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
