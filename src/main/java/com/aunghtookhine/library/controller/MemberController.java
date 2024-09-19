@@ -2,7 +2,7 @@ package com.aunghtookhine.library.controller;
 
 import com.aunghtookhine.library.dto.MemberDto;
 import com.aunghtookhine.library.dto.MemberResponseDto;
-import com.aunghtookhine.library.service.implementation.MemberServiceImpl;
+import com.aunghtookhine.library.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("api/members")
 @AllArgsConstructor
 public class MemberController {
-    private final MemberServiceImpl memberServiceImpl;
+    private final MemberService memberServiceImpl;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping

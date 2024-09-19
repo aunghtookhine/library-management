@@ -2,7 +2,7 @@ package com.aunghtookhine.library.mapper;
 
 import com.aunghtookhine.library.dto.MemberDto;
 import com.aunghtookhine.library.dto.MemberResponseDto;
-import com.aunghtookhine.library.model.Member;
+import com.aunghtookhine.library.entity.Member;
 import org.springframework.stereotype.Service;
 
 @Service

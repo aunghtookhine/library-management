@@ -3,7 +3,7 @@ package com.aunghtookhine.library.controller;
 import com.aunghtookhine.library.dto.RecordDto;
 import com.aunghtookhine.library.dto.RecordResponseDto;
 import com.aunghtookhine.library.enums.Status;
-import com.aunghtookhine.library.service.implementation.RecordServiceImpl;
+import com.aunghtookhine.library.service.RecordService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("api/records")
 @AllArgsConstructor
 public class RecordController {
-    private final RecordServiceImpl recordServiceImpl;
+    private final RecordService recordServiceImpl;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping

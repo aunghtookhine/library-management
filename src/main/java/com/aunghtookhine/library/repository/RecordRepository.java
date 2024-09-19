@@ -1,7 +1,7 @@
 package com.aunghtookhine.library.repository;
 
 import com.aunghtookhine.library.enums.Status;
-import com.aunghtookhine.library.model.Record;
+import com.aunghtookhine.library.entity.Record;
 import jakarta.validation.constraints.Positive;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

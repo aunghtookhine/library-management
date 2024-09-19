@@ -2,7 +2,7 @@ package com.aunghtookhine.library.controller;
 
 import com.aunghtookhine.library.dto.BookDto;
 import com.aunghtookhine.library.enums.Genre;
-import com.aunghtookhine.library.service.implementation.BookServiceImpl;
+import com.aunghtookhine.library.service.BookService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("api/books")
 @AllArgsConstructor
 public class BookController {
-    private final BookServiceImpl bookServiceImpl;
+    private final BookService bookServiceImpl;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping

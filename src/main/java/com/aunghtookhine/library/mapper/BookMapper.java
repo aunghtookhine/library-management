@@ -1,7 +1,7 @@
 package com.aunghtookhine.library.mapper;
 
 import com.aunghtookhine.library.dto.BookDto;
-import com.aunghtookhine.library.model.Book;
+import com.aunghtookhine.library.entity.Book;
 import org.springframework.stereotype.Service;
 
 @Service

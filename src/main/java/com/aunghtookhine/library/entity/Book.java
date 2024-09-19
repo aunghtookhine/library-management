@@ -1,4 +1,4 @@
-package com.aunghtookhine.library.model;
+package com.aunghtookhine.library.entity;
 
 import com.aunghtookhine.library.enums.Genre;
 import jakarta.persistence.*;

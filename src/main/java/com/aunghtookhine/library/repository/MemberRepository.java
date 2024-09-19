@@ -1,6 +1,6 @@
 package com.aunghtookhine.library.repository;
 
-import com.aunghtookhine.library.model.Member;
+import com.aunghtookhine.library.entity.Member;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

@@ -1,4 +1,4 @@
-package com.aunghtookhine.library.model;
+package com.aunghtookhine.library.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

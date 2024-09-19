@@ -1,7 +1,7 @@
 package com.aunghtookhine.library.repository;
 
 import com.aunghtookhine.library.enums.Genre;
-import com.aunghtookhine.library.model.Book;
+import com.aunghtookhine.library.entity.Book;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

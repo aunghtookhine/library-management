@@ -2,9 +2,9 @@ package com.aunghtookhine.library.mapper;
 
 import com.aunghtookhine.library.dto.RecordDto;
 import com.aunghtookhine.library.dto.RecordResponseDto;
-import com.aunghtookhine.library.model.Book;
-import com.aunghtookhine.library.model.Member;
-import com.aunghtookhine.library.model.Record;
+import com.aunghtookhine.library.entity.Book;
+import com.aunghtookhine.library.entity.Member;
+import com.aunghtookhine.library.entity.Record;
 import org.springframework.stereotype.Service;
 
 @Service
