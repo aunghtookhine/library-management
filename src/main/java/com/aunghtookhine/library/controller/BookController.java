@@ -2,7 +2,7 @@ package com.aunghtookhine.library.controller;
 
 import com.aunghtookhine.library.dto.BookDto;
 import com.aunghtookhine.library.enums.Genre;
-import com.aunghtookhine.library.service.BookService;
+import com.aunghtookhine.library.service.implementation.BookServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,43 +13,43 @@ import java.util.List;
 @RequestMapping("api/books")
 @AllArgsConstructor
 public class BookController {
-    private final BookService bookService;
+    private final BookServiceImpl bookServiceImpl;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public BookDto createBook(@Valid @RequestBody BookDto dto){
-        return bookService.createBook(dto);
+        return bookServiceImpl.createBook(dto);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
     public List<BookDto> findBooks(@RequestParam(value = "author", required = false) String author, @RequestParam(value = "genre", required = false) Genre genre){
         if(author != null && genre != null){
-            return bookService.findBooksByAuthorAndGenre(author, genre);
+            return bookServiceImpl.findBooksByAuthorAndGenre(author, genre);
         }else if (author != null){
-            return bookService.findBooksByAuthor(author);
+            return bookServiceImpl.findBooksByAuthor(author);
         }else if (genre != null){
-            return bookService.findBooksByGenre(genre);
+            return bookServiceImpl.findBooksByGenre(genre);
         }else{
-            return bookService.findBooks();
+            return bookServiceImpl.findBooks();
         }
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
     public BookDto findBook(@PathVariable("id") Integer id){
-        return bookService.findBook(id);
+        return bookServiceImpl.findBook(id);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}")
     public BookDto updateBook(@PathVariable("id") Integer id, @Valid @RequestBody BookDto dto){
-        return bookService.updateBook(id, dto);
+        return bookServiceImpl.updateBook(id, dto);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable("id") Integer id){
-        bookService.deleteBook(id);
+        bookServiceImpl.deleteBook(id);
     }
 }

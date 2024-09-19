@@ -2,7 +2,7 @@ package com.aunghtookhine.library.controller;
 
 import com.aunghtookhine.library.dto.MemberDto;
 import com.aunghtookhine.library.dto.MemberResponseDto;
-import com.aunghtookhine.library.service.MemberService;
+import com.aunghtookhine.library.service.implementation.MemberServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,35 +13,35 @@ import java.util.List;
 @RequestMapping("api/members")
 @AllArgsConstructor
 public class MemberController {
-    private final MemberService memberService;
+    private final MemberServiceImpl memberServiceImpl;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public MemberResponseDto createMember(@Valid @RequestBody MemberDto dto){
-        return memberService.createMember(dto);
+        return memberServiceImpl.createMember(dto);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
     public List<MemberResponseDto> findMembers(){
-        return memberService.findMembers();
+        return memberServiceImpl.findMembers();
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
     public MemberResponseDto findMember(@PathVariable("id") Integer id){
-        return memberService.findMember(id);
+        return memberServiceImpl.findMember(id);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}")
     public MemberResponseDto updateMember(@PathVariable("id") Integer id, @Valid @RequestBody MemberDto dto){
-        return memberService.updateMember(id, dto);
+        return memberServiceImpl.updateMember(id, dto);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void deleteMember(@PathVariable("id") Integer id){
-        memberService.deleteMember(id);
+        memberServiceImpl.deleteMember(id);
     }
 }

@@ -19,4 +19,6 @@ public interface RecordRepository extends JpaRepository<Record, Integer> {
     List<Record> findAllByStatusAndIsAvailableTrue(Status status);
 
     List<Record> findAllByMemberIdAndReturnDateNull(Integer id);
+
+    List<Record> findAllByBookIdAndReturnDateNull(Integer id);
 }
